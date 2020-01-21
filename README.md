@@ -1,14 +1,14 @@
-##Testing app with flask
+Testing app with flask
+======================
 
+###Installation
 
-##Installation
-
-'''
+´´´
 pip install Flask
-'''
+´´´
 
-##Run
+###Run
 
-'''
+´´´
 python app.py
-'''
+´´´
