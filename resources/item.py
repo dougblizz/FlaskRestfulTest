@@ -7,7 +7,13 @@ Created on Tue Dec 31 11:34:49 2019
 
 #import sqlite3
 from flask_restful import Resource, reqparse
-from flask_jwt_extended import jwt_required, get_jwt_claims, jwt_optional, get_jwt_identity
+from flask_jwt_extended import (
+    jwt_required, 
+    get_jwt_claims, 
+    jwt_optional, 
+    get_jwt_identity,
+    refresh_jwt_required
+)
 from models.item import ItemModel
 
 class Item(Resource):
@@ -33,7 +39,7 @@ class Item(Resource):
             return item.json(), 200
         return {'item': None}, 404
         
-    
+    @refresh_jwt_required
     def post(self, name):
         if ItemModel.findByName(name):
             return {"message": f"el {name} ya existe"}, 400
