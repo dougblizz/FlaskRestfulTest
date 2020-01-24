@@ -46,7 +46,7 @@ class ItemModel(db.Model):
         '''
         
     @classmethod
-    def findAll(cls, name):
+    def findAll(cls):
         return cls.query.all()
     
     def save_to_db(self):

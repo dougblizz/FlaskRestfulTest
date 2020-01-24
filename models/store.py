@@ -25,7 +25,7 @@ class StoreModel(db.Model):
         return cls.query.filter_by(name = name).first()
     
     @classmethod
-    def findAll(cls, name):
+    def findAll(cls):
         return cls.query.all()
     
     def save_to_db(self):
