@@ -7,7 +7,7 @@ Created on Tue Dec 31 11:34:49 2019
 
 #import sqlite3
 from flask_restful import Resource, reqparse
-from flask_jwt_extended import jwt_required, get_jwt_claims, jwt_opcional, get_jwt_identity
+from flask_jwt_extended import jwt_required, get_jwt_claims, jwt_optional, get_jwt_identity
 from models.item import ItemModel
 
 class Item(Resource):
@@ -119,7 +119,7 @@ class Item(Resource):
     
 class Items(Resource):
     
-    @jwt_opcional
+    @jwt_optional
     def get(self):
         user_id = get_jwt_identity()
         items = list(map(lambda x: x.json(), ItemModel.findAll()))
