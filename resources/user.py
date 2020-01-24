@@ -44,3 +44,24 @@ class UserRegister(Resource):
         '''
         
         return {"message": "Usuario creado con exito"}, 201
+    
+class User(Resource):
+    
+    @classmethod
+    def get(cls, user_id):
+        user = UserModel.findById(user_id)
+        if user:
+            return user.json()
+        else:
+            return {'message': 'el usuario no existe'}, 404
+    
+    @classmethod
+    def delete(cls, user_id):
+        user = UserModel.findById(user_id)
+        if user:
+            user.delete_from_db()
+            return {'message': 'el usuario fue borrado'}, 200
+        else:
+            return {'message': 'el usuario no existe'}, 404
+    
+    
