@@ -52,6 +52,7 @@ class Item(Resource):
     @jwt_required 
     def delete(self, name):
         claims = get_jwt_claims()
+        print(claims['es_admin'])
         if not claims['es_admin']:
             return {'message': 'necesitas permisos de admin'}, 401
         
