@@ -20,7 +20,12 @@ class ItemModel(db.Model):
         self.store_id = store_id
         
     def json(self):
-        return {'name':self.name, 'price':self.price}
+        return {
+                'id':self.id, 
+                'name':self.name, 
+                'price':self.price, 
+                'store_id': self.store_id
+        }
     
     @classmethod
     def findByName(cls, name):
@@ -39,6 +44,11 @@ class ItemModel(db.Model):
         if row:
             return cls(*row) # pasa el name y precio en el orden que esta
         '''
+        
+    @classmethod
+    def findAll(cls, name):
+        return cls.query.all()
+    
     def save_to_db(self):
         db.session().add(self)
         db.session().commit()

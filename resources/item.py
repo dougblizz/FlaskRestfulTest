@@ -113,7 +113,7 @@ class Item(Resource):
     
 class Items(Resource):
     def get(self):
-        return {'items': list(map(lambda x: x.json(), ItemModel.query.all()))}
+        return {'items': list(map(lambda x: x.json(), ItemModel.findAll()))}
         #Con compresion [item.json() for item in ItemModel.query.all()]
         
         #Sin SQLAlchemy
