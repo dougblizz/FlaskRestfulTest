@@ -7,7 +7,7 @@ Created on Tue Dec 31 11:34:49 2019
 
 #import sqlite3
 from flask_restful import Resource, reqparse
-from flask_jwt import jwt_required
+from flask_jwt_extended import jwt_required
 from models.item import ItemModel
 
 class Item(Resource):
@@ -25,7 +25,7 @@ class Item(Resource):
                        help = 'Cada item tiene que tener un store id.'
     )
     
-    @jwt_required()
+    @jwt_required
     def get(self, name):
         item = ItemModel.findByName(name)
         
