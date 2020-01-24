@@ -53,12 +53,14 @@ class Item(Resource):
     def delete(self, name):
         claims = get_jwt_claims()
         if not claims['es_admin']:
-            return {'message': 'necesitos permisos de admin'}, 401
+            return {'message': 'necesitas permisos de admin'}, 401
+        
         item = ItemModel.findByName(name)
         
         if item:
             item.delete_from_db()
-        return {'message': 'El item fue eliminado'}, 200   
+            return {'message': 'El item fue eliminado'}, 200  
+        return {'message': 'Item no encontrado'}, 404   
         
         #Sin SQLAlchemy
         '''
