@@ -12,8 +12,9 @@ from flask_jwt_extended import (
     get_jwt_claims, 
     jwt_optional, 
     get_jwt_identity,
-    refresh_jwt_required
+    fresh_jwt_required
 )
+
 from models.item import ItemModel
 
 class Item(Resource):
@@ -39,7 +40,7 @@ class Item(Resource):
             return item.json(), 200
         return {'item': None}, 404
         
-    @refresh_jwt_required
+    @fresh_jwt_required
     def post(self, name):
         if ItemModel.findByName(name):
             return {"message": f"el {name} ya existe"}, 400
