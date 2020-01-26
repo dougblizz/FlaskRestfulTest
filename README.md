@@ -6,7 +6,7 @@ build with Flask, Flask-RESTful, Flask-JWT and Flask-SQLAlchemy.
 Deployed on Heroku
 
 
-### Documentacion de la api
+### Documentacion para acceder a la api
 
 Publicado en [Postman](https://www.getpostman.com/) : [documenter.getpostman.com/view/7870712/SWT8henW](https://documenter.getpostman.com/view/7870712/SWT8henW)
 
